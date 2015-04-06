@@ -7,7 +7,7 @@ Install with composer,
 composer require scribble/scribble dev-master
 ```
 
-Once installed you will need to get the bridge for the blogging platforms that you want to post to use, at the moment only Wordpress is supported.
+Once installed you will need to get the bridge for the blogging platforms that you want to use, at the moment only Wordpress is supported.
 
 ####Wordpress Bridge
 Download the <a href="https://github.com/GoScribble/WordpressBridge">Scribble Bridge plugin</a> for Wordpress and copy it to your Wordpress plugin directory, activate it and you are good to go! Scribble will now be able to interface with your Wordpress site.
