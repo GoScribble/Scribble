@@ -4,7 +4,7 @@ Publish your blog posts across multiple blogging platforms and sites
 ###Get Scribble
 Install with composer,
 ```
-composer require scribble/scribble @dev
+composer require scribble/scribble dev-master
 ```
 
 Once installed you will need to get the bridge for the blogging platforms that you want to post to use, at the moment only Wordpress is supported.
