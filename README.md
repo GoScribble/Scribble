@@ -58,3 +58,16 @@ Publisher::any()->create(
         "post_content"  => "I'm posting all over the place now!
     ]);
 ```
+
+###Other examples of what Scribble can do
+#####Publish only to certain providers
+```php
+use Scribble\Publisher;
+Publisher::only(["myBlog", "myPhpBlog"])->create(
+    [
+        "post_title"    => "Hi Mum",
+        "post_content"  => "I'm posting all over the place now!
+    ]);
+```
+
+The "only" method accepts an array of the nicknames of the blogs you want to  use, nicknames are set in the Config/config.php file
