@@ -12,7 +12,7 @@ Download the Scribble Bridge plugin for Wordpress and copy it to your Wordpress 
 ###Setting up Scribble
 Open your Scribble/Config/config.php file
 
-##Making your first post
+###Making your first post
 ```php
 use Scribble\Publisher;
 Publisher::any()->create(
