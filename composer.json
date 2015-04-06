@@ -1,7 +1,7 @@
 {
     "name": "scribble/scribble",
     "description": "Publish your blog posts across multiple blogging platforms and sites",
-    "require": {
+    "require-dev": {
         "curl/curl": "dev-master"
     },
     "autoload": {
