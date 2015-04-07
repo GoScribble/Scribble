@@ -1,9 +1,10 @@
 <?php namespace Scribble\Providers;
 
 use Scribble\Exceptions\ScribbleProviderException;
+use Scribble\Contracts\ProviderContract;
 use \Curl\Curl;
 
-class Wordpress
+class Wordpress implements ProviderContract
 {
     private $config;
     
