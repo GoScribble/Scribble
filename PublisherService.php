@@ -225,6 +225,27 @@ class PublisherService
         $this->providerDefinition = $definition;
     }
     
+    /**
+    * This method is called from Publisher just after the Publisher object has
+    * been created
+    */
+    public function bootstrap()
+    {
+        return $this->verifyConfig($this->loadConfig());
+    }
+    
+    /**
+    * Check the config file is formed correctly
+    */
+    private function verifyConfig($config)
+    {
+        if (empty($config["Providers"]) || empty($config["Groups"])) {
+            throw new ScribbleException("Your Scibble 'Config/config.php' file is not formatted correctly, check your 'config.example.php' file for help.");
+        }
+        
+        return true;
+    }
+    
     private function scribbleExceptionHandle($exception)
     {
         echo "Scribble Exception: " . $exception->getMessage();

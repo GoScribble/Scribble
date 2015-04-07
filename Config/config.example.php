@@ -16,6 +16,16 @@ return [
         
         ]
     
+    ],
+    
+    "Groups" => [
+    
+        "MyWordpressBlogs" => [
+        
+            "providerNickname"
+            
+        ]
+        
     ]
 
 ]

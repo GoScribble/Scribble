@@ -1,5 +1,6 @@
 <?php namespace Scribble;
 
+use Scribble\Exceptions\ScribbleException;
 use \ReflectionClass;
 use \ReflectionException;
 
@@ -14,13 +15,17 @@ class Publisher
         try {
             $scribbleObject = new ReflectionClass("Scribble\PublisherService");
             $scribbleInstance = $scribbleObject->newInstance();
-        
+            
+            //Run bootstrap
+            call_user_func_array(array($scribbleInstance, "bootstrap"), []);
             //Call object with the original request
             call_user_func_array(array($scribbleInstance, $method), $args);
         
             return $scribbleInstance;
         } catch (ReflectionException $e) {
             self::thisIsNotAGreatStartExceptionHandle($e);
+        } catch (ScribbleException $e) {
+            echo "Scribble Exception: " . $e->getMessage();
         }
     }
     
