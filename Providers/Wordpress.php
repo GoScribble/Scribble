@@ -2,15 +2,21 @@
 
 use Scribble\Exceptions\ScribbleProviderException;
 use Scribble\Contracts\ProviderContract;
+use Scribble\ProviderService;
 use \Curl\Curl;
 
-class Wordpress implements ProviderContract
+class Wordpress extends ProviderService implements ProviderContract
 {
     private $config;
     
     public function __construct($config)
     {
-        $this->config = $config;
+        //Check config settings are valid
+        if ($this->checkConfig($config)) {
+            $this->config = $config;
+        } else {
+            throw new ScribbleProviderException("The config data sent to the provider class is incomplete or not provided correctly.");
+        }
     }
     
     /**
