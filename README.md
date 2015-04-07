@@ -5,7 +5,7 @@ Scribble is a library that will connect you and all your blogs in a simple, clea
 Please keep in mind when using Scribble that it is still in development
 ```
 
-#When does Scribbly come in handy?
+#When does Scribble come in handy?
 Let's say you're an author and you maintain several blogs (a personal blog, one for the book series you author and the publishers blog) if you planned on a book signing tour and you wanted to update all your readers across all three blogs to your progress without having to post three times across the blogs then Scribble could be your savior, doing all the work and publishing your posts automatically across all your sites.
 
 ###Get Scribble
