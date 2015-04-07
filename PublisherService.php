@@ -9,6 +9,7 @@ class PublisherService
 {
     
     private $publishOver;
+    private $providerDefinition;
     
     /**
     * Set Scribble to publish over all available providers
@@ -16,6 +17,7 @@ class PublisherService
     public function all()
     {
         try {
+            $this->checkAndSetProviderDefinition("all");
             $this->publishOver = $this->populateProviders("all", $this->loadConfig());
         } catch (ScribbleException $e) {
             $this->scribbleExceptionHandle($e);
@@ -30,6 +32,7 @@ class PublisherService
     public function only($providers)
     {
         try {
+            $this->checkAndSetProviderDefinition("only");
             
             //Verify the providers provided are all available for use
             if (!$this->verifyProvidersAgainstConfig($providers, $this->loadConfig())) {
@@ -37,12 +40,16 @@ class PublisherService
             }
             
             $this->publishOver = $this->populateProviders($providers, $this->loadConfig());
-            
         } catch (ScribbleException $e) {
             $this->scribbleExceptionHandle($e);
         }
         
         return $this;
+    }
+    
+    public function group($group)
+    {
+        
     }
     
     public function create($data)
@@ -203,6 +210,19 @@ class PublisherService
         }
         
         return true;
+    }
+    
+    /**
+    * Checks if a method like all, only or group which (in different ways) collect
+    * providers for use. If no definition is currently set we record it here
+    */
+    private function checkAndSetProviderDefinition($definition)
+    {
+        if (!empty($this->providerDefinition)) {
+            throw new ScribbleException("You have already set the publisher to use the method '" . $this->providerDefinition . "' to collect the providers. We have detected that you have then tried to use another method to perform the same task. This is not allowed.");
+        }
+        
+        $this->providerDefinition = $definition;
     }
     
     private function scribbleExceptionHandle($exception)
