@@ -249,6 +249,7 @@ class PublisherService
     private function scribbleExceptionHandle($exception)
     {
         echo "Scribble Exception: " . $exception->getMessage();
+        throw new ScribbleException($exception);
     }
     
     private function scribbleProviderExceptionHandle($exception, $provider)
