@@ -19,6 +19,7 @@ class PublisherTest extends \PHPUnit_Framework_TestCase
     */
     public function testOnlyDefinitionWithInvalidNicknames()
     {
+        $this->expectOutputString("Scribble Exception: There are no providers available for use, check your Scribble 'Config/config.php' file");
         Publisher::only(["wp", "SomeNonExistantNickname"]);
     }
 }
