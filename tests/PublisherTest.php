@@ -14,9 +14,11 @@ class PublisherTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf("\Scribble\PublisherService", Publisher::only(["wp"]));
     }
     
+    /**
+    * @expectedException ScribbleException
+    */
     public function testOnlyDefinitionWithInvalidNicknames()
     {
-        $publisherReturn = Publisher::only(["wp", "SomeNonExistantNickname"]);
-        $this->assertNotInstanceOf("\Scribble\PublisherService", $publisherReturn);
+        Publisher::only(["wp", "SomeNonExistantNickname"]);
     }
 }
