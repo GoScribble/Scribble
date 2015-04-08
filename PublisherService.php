@@ -21,6 +21,7 @@ class PublisherService
             $this->publishOver = $this->populateProviders("all", $this->loadConfig());
         } catch (ScribbleException $e) {
             $this->scribbleExceptionHandle($e);
+            return false;
         }
         
         return $this;
