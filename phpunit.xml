@@ -1,0 +1,12 @@
+<phpunit backupGlobals="false"
+         bootstrap="./bootstrap.php">
+    <testsuites>
+        <testsuite>
+            <directory suffix="Test.php">tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+        </whitelist>
+    </filter>
+</phpunit>
