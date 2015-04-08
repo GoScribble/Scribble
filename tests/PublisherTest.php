@@ -11,7 +11,7 @@ class PublisherTest extends \PHPUnit_Framework_TestCase
     
     public function testOnlyDefinition()
     {
-        $this->assertInstanceOf("\Scribble\PublisherService", Publisher::only(["wp"]));
+        $this->assertInstanceOf("\Scribble\PublisherService", Publisher::only(["wpp"]));
     }
     
    
