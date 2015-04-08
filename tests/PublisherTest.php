@@ -15,7 +15,7 @@ class PublisherTest extends \PHPUnit_Framework_TestCase
     }
     
     /**
-    * @expectedException ScribbleException
+    * @expectedException \Scribble\Exceptions\ScribbleException
     */
     public function testOnlyDefinitionWithInvalidNicknames()
     {
