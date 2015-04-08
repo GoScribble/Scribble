@@ -14,9 +14,6 @@ class PublisherTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf("\Scribble\PublisherService", Publisher::only(["wpp"]));
     }
     
-    /**
-    * @expectedException \Scribble\Exceptions\ScribbleException
-    */
     public function testOnlyDefinitionWithInvalidNicknames()
     {
         $this->expectOutputString("Scribble Exception: There are no providers available for use, check your Scribble 'Config/config.php' file");
