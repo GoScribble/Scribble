@@ -4,7 +4,7 @@ use Scribble\Publisher;
 
 class PublisherTest extends \PHPUnit_Framework_TestCase
 {
-    public function basicUseTest()
+    public function testBasicUse()
     {
         $this->assertTrue(Publisher::any()->create([
             "post_title"    => "Hello Title",
