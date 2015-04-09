@@ -93,10 +93,7 @@ class PublisherService
         
         foreach ($providers as $providerKey => $providerValue) {
             
-            //Check if this provider exists at all
-            if (!in_array($providerValue, $configProviders["Providers"]["nickname"])) {
-                $providersOk = false;
-            }
+            $providerFoundInConfig = false;
             
             foreach ($configProviders["Providers"] as $configKey => $configValue) {
                 
@@ -110,17 +107,23 @@ class PublisherService
                             //BREAK OUT
                         }
                     }
-                    
+                       
                     //Check for any issues with the config settings
                     if ($configValue["active"] === false) {
                         $providersOk = false;
                     }
                     
                     array_push($providersVerified, $providerValue);
+                    $providerFoundInConfig = true;
                     
                 }
-                
             }
+            
+            //Check if given provider does not exist in the config file
+            if (!$providerFoundInConfig) {
+                $providersOk = false;
+            }
+            
         }
         
         return $providersOk;
