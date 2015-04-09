@@ -18,7 +18,12 @@ class PublisherService
     {
         try {
             $this->checkAndSetProviderDefinition("all");
-            $this->publishOver = $this->populateProviders("all", $this->loadConfig());
+            
+            $populateProviders = $this->populateProviders("all", $this->loadConfig());
+            if (!$populateProviders) {
+                throw new ScribbleException("Internal class issue with populateProviders when the 'all' method was triggered.");
+            }
+            $this->publishOver = $populateProviders;
         } catch (ScribbleException $e) {
             $this->scribbleExceptionHandle($e);
             return false;
@@ -40,7 +45,11 @@ class PublisherService
                 throw new ScribbleException("Either one of the providers supplied are not available for use, check the Scribble 'Config/config.php' file OR you have attempted to use a provider by nickname more than once which is not allowed.");
             }
             
-            $this->publishOver = $this->populateProviders($providers, $this->loadConfig());
+            $populateProviders = $this->populateProviders($providers, $this->loadConfig());
+            if (!$populateProviders) {
+                throw new ScribbleException("Internal class issue with populateProviders when the 'only' method was triggered.");
+            }
+            $this->publishOver = $populateProviders;
         } catch (ScribbleException $e) {
             $this->scribbleExceptionHandle($e);
             return false;
@@ -68,7 +77,11 @@ class PublisherService
                 throw new ScribbleException("Either one of the providers supplied are not available for use, check the Scribble 'Config/config.php' file OR you have attempted to use a provider by nickname more than once which is not allowed.");
             }
             
-            $this->publishOver = $this->populateProviders($providers, $this->loadConfig());
+            $populateProviders = $this->populateProviders($providers, $this->loadConfig());
+            if (!$populateProviders) {
+                throw new ScribbleException("Internal class issue with populateProviders when the 'group' method was triggered.");
+            }
+            $this->publishOver = $populateProviders;
         } catch (ScribbleException $e) {
             $this->scribbleExceptionHandle($e);
             return false;
