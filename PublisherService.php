@@ -92,6 +92,12 @@ class PublisherService
         $providersVerified = [];
         
         foreach ($providers as $providerKey => $providerValue) {
+            
+            //Check if this provider exists at all
+            if (!in_array($providerValue, $configProviders["Providers"])) {
+                $providersOk = false;
+            }
+            
             foreach ($configProviders["Providers"] as $configKey => $configValue) {
                 
                 //Check if this is the provider we are looking for
