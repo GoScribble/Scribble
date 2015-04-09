@@ -94,7 +94,7 @@ class PublisherService
         foreach ($providers as $providerKey => $providerValue) {
             
             //Check if this provider exists at all
-            if (!in_array($providerValue, $configProviders["Providers"])) {
+            if (!in_array($providerValue, $configProviders["Providers"]["nickname"])) {
                 $providersOk = false;
             }
             
