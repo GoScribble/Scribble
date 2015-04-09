@@ -49,9 +49,32 @@ class PublisherService
         return $this;
     }
     
+    /**
+    * Selects the group(s) of providers from the config file to publish over
+    */
     public function group($group)
     {
+        try {
+            $this->checkAndSetProviderDefinition("group");
+            
+            //Get the providers into an array from their resolved groups
+            $providers = $this->getProvidersFromGroup($group, $this->loadConfig());
+            if (!$providers) {
+                throw new ScribbleException("One or more of the groups provided could not be resolved with their providers, check the Scribble 'Config/config.php' file"); 
+            }
+            
+            //Verify the providers provided are all available for use
+            if (!$this->verifyProvidersAgainstConfig($providers, $this->loadConfig())) {
+                throw new ScribbleException("Either one of the providers supplied are not available for use, check the Scribble 'Config/config.php' file OR you have attempted to use a provider by nickname more than once which is not allowed.");
+            }
+            
+            $this->publishOver = $this->populateProviders($providers, $this->loadConfig());
+        } catch (ScribbleException $e) {
+            $this->scribbleExceptionHandle($e);
+            return false;
+        }
         
+        return $this;
     }
     
     public function create($data)
@@ -255,6 +278,25 @@ class PublisherService
         }
         
         return true;
+    }
+    
+    /**
+    * Return an array of providers from the provided group(s)
+    */
+    private function getProvidersFromGroup($group, $config)
+    {
+        $returnProviders = array();
+        foreach ($group as $groupValue) {
+            //Check if this group doesn't exist in the config file
+            if (!array_key_exists($groupValue, $config["Groups"])) {
+                return false;
+            }
+            
+            //Add these providers to the return array
+            $returnProviders = array_merge($returnProviders, $config["Groups"][$groupValue]);
+        }
+        
+        return $returnProviders;
     }
     
     private function scribbleExceptionHandle($exception)
