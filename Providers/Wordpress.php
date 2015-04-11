@@ -20,8 +20,8 @@ class Wordpress extends ProviderService implements ProviderContract
     }
     
     /**
-    * cUrl into the Wordpress Scribble Bridge plugin and create a post
-    */
+     * cUrl into the Wordpress Scribble Bridge plugin and create a post
+     */
     public function create($data)
     {
         $curl = new Curl();
@@ -31,9 +31,9 @@ class Wordpress extends ProviderService implements ProviderContract
     }
     
     /**
-    * Handle the response from the bridge, check for success or failure and
-    * output an exception if required
-    */
+     * Handle the response from the bridge, check for success or failure and
+     * output an exception if required
+     */
     private function handleResponse($response)
     {
         $responseDecoded = json_decode($response);
