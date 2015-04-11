@@ -12,8 +12,8 @@ class PublisherService
     private $providerDefinition;
     
     /**
-    * Set Scribble to publish over all available providers
-    */
+     * Set Scribble to publish over all available providers
+     */
     public function all()
     {
         try {
@@ -33,8 +33,8 @@ class PublisherService
     }
     
     /**
-    * Set which providers Scribble should publish over
-    */
+     * Set which providers Scribble should publish over
+     */
     public function only($providers)
     {
         try {
@@ -59,8 +59,8 @@ class PublisherService
     }
     
     /**
-    * Selects the group(s) of providers from the config file to publish over
-    */
+     * Selects the group(s) of providers from the config file to publish over
+     */
     public function group($group)
     {
         try {
@@ -104,8 +104,8 @@ class PublisherService
     }
     
     /**
-    * Load the config file
-    */
+     * Load the config file
+     */
     private function loadConfig()
     {
         //Check if the config file exists
@@ -120,8 +120,8 @@ class PublisherService
     }
     
     /**
-    * Verify that the given array of providers has valid configeration settings
-    */
+     * Verify that the given array of providers has valid configeration settings
+     */
     private function verifyProvidersAgainstConfig($providers, $configProviders)
     {
         $providersOk = true;
@@ -166,9 +166,9 @@ class PublisherService
     }
     
     /**
-    * Takes an array of provider nicknames (or the string "all") and prepares their config settings
-    * for use
-    */
+     * Takes an array of provider nicknames (or the string "all") and prepares their config settings
+     * for use
+     */
     private function populateProviders($providers, $configProviders)
     {
         $providerSettings = array();
@@ -221,8 +221,8 @@ class PublisherService
     }
     
     /**
-    * Publish to the selected providers
-    */
+     * Publish to the selected providers
+     */
     private function createNewPost($data)
     {
         //Loop through the publishing vectors, creating an instance of the provider class
@@ -243,9 +243,9 @@ class PublisherService
     }
     
     /**
-    * Validate that the data provided to create a new post is an array and
-    * has everything that is required
-    */
+     * Validate that the data provided to create a new post is an array and
+     * has everything that is required
+     */
     private function validateNewPostData($data)
     {
         if (!is_array($data)) {
@@ -262,6 +262,7 @@ class PublisherService
     /**
     * Checks if a method like all, only or group which (in different ways) collect
     * providers for use. If no definition is currently set we record it here
+    * @param string $definition
     */
     private function checkAndSetProviderDefinition($definition)
     {
@@ -273,17 +274,17 @@ class PublisherService
     }
     
     /**
-    * This method is called from Publisher just after the Publisher object has
-    * been created
-    */
+     * This method is called from Publisher just after the Publisher object has
+     * been created
+     */
     public function bootstrap()
     {
         return $this->verifyConfig($this->loadConfig());
     }
     
     /**
-    * Check the config file is formed correctly
-    */
+     * Check the config file is formed correctly
+     */
     private function verifyConfig($config)
     {
         if (empty($config["Providers"]) || empty($config["Groups"])) {
@@ -294,8 +295,8 @@ class PublisherService
     }
     
     /**
-    * Return an array of providers from the provided group(s)
-    */
+     * Return an array of providers from the provided group(s)
+     */
     private function getProvidersFromGroup($group, $config)
     {
         $returnProviders = array();
@@ -317,6 +318,9 @@ class PublisherService
         echo "Scribble Exception: " . $exception->getMessage();
     }
     
+    /**
+     * @param ScribbleProviderException $exception
+     */
     private function scribbleProviderExceptionHandle($exception, $provider)
     {
         echo "Scribble Provider Exception [" . $provider . "]: " . $exception->getMessage();
