@@ -21,7 +21,7 @@ class PublisherService
             
             $populateProviders = $this->populateProviders("all", $this->loadConfig());
             if (!$populateProviders) {
-                throw new ScribbleException("Internal class issue with populateProviders when the 'all' method was triggered.");
+                throw new ScribbleException("Internal class issue with populateProviders when the 'all' method was triggered. Maybe there aren't any providers available?");
             }
             $this->publishOver = $populateProviders;
         } catch (ScribbleException $e) {
@@ -47,7 +47,7 @@ class PublisherService
             
             $populateProviders = $this->populateProviders($providers, $this->loadConfig());
             if (!$populateProviders) {
-                throw new ScribbleException("Internal class issue with populateProviders when the 'only' method was triggered.");
+                throw new ScribbleException("Internal class issue with populateProviders when the 'only' method was triggered. Maybe there aren't any providers available?");
             }
             $this->publishOver = $populateProviders;
         } catch (ScribbleException $e) {
@@ -79,7 +79,7 @@ class PublisherService
             
             $populateProviders = $this->populateProviders($providers, $this->loadConfig());
             if (!$populateProviders) {
-                throw new ScribbleException("Internal class issue with populateProviders when the 'group' method was triggered.");
+                throw new ScribbleException("Internal class issue with populateProviders when the 'group' method was triggered. Maybe there aren't any providers available?");
             }
             $this->publishOver = $populateProviders;
         } catch (ScribbleException $e) {
@@ -213,7 +213,6 @@ class PublisherService
         
         //Check if there are no available providers
         if (empty($providerSettings)) {
-            throw new ScribbleException("There are no providers available for use, check your Scribble 'Config/config.php' file");
             return false;
         }
         

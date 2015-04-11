@@ -5,7 +5,7 @@ use \ReflectionClass;
 use \ReflectionException;
 
 class Publisher
-{   
+{
     /**
      * The static entry point will create an object of this class
      * to be used for method chaining
