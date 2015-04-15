@@ -60,7 +60,7 @@ Make sure the nickname is unique to each entry.
 ###Making your first post
 ```php
 use Scribble\Publisher;
-Publisher::any()->create(
+Publisher::all()->create(
     [
         "post_title"    => "Hi Mum",
         "post_content"  => "I'm posting all over the place now!
