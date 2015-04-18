@@ -19,9 +19,7 @@ class Publisher
             //Run bootstrap
             call_user_func_array(array($scribbleInstance, "bootstrap"), []);
             //Call object with the original request
-            call_user_func_array(array($scribbleInstance, $method), $args);
-        
-            return $scribbleInstance;
+            return call_user_func_array(array($scribbleInstance, $method), $args);
         } catch (ReflectionException $e) {
             self::thisIsNotAGreatStartExceptionHandle($e);
         } catch (ScribbleException $e) {

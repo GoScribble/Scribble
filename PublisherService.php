@@ -97,10 +97,13 @@ class PublisherService
             if (!$this->validateNewPostData($data)) {
                 throw new ScribbleException("The data provided to create a new post is incomplete or not formated correctly.");
             }
+            
+            //Create the post
+            return $this->createNewPost($data);
         } catch (ScribbleException $e) {
             $this->scribbleExceptionHandle($e);
+            return false;
         }
-        $this->createNewPost($data);
     }
     
     /**
@@ -235,10 +238,14 @@ class PublisherService
                 call_user_func_array(array($providerObj, "create"), [$data]);
             } catch (ScribbleProviderException $e) {
                 $this->scribbleProviderExceptionHandle($e, $publishValue["provider_class"]);
+                return false;
             } catch (ReflectionException $e) {
                 $this->scribbleExceptionHandle($e);
+                return false;
             }
         }
+        
+        return true;
     }
     
     /**
