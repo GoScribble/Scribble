@@ -20,7 +20,7 @@ Once installed you will need to get the bridge for the blogging platforms that y
 ####Wordpress Bridge
 Download the <a href="https://github.com/GoScribble/Wordpress-Bridge">Scribble Bridge plugin</a> for Wordpress and copy it to your Wordpress plugin directory, activate it and you are good to go! Scribble will now be able to interface with your Wordpress site.
 
-###phpBB Bridge
+####phpBB Bridge
 Download the <a href="https://github.com/GoScribble/phpBB-Bridge">Scribble Bridge plugin</a> for phpBB and drop it into your forum's root directory, and that's it. 
 
 ###Setting up Scribble
