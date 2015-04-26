@@ -24,7 +24,7 @@ Download the <a href="https://github.com/GoScribble/Wordpress-Bridge">Scribble B
 Download the <a href="https://github.com/GoScribble/phpBB-Bridge">Scribble Bridge plugin</a> for phpBB and drop it into your forum's root directory, and that's it. 
 
 ###Setting up Scribble
-Rename your Scribble/Config/config.example.php file to config.php, here's an example of the config file set up to work with two of my Wordpress blogs
+Rename your Scribble/Config/config.example.php file to config.php, here's an example of the config file set up to work with a Wordpress blog and a phpBB forum.
 ```php
 return [
 
@@ -55,6 +55,17 @@ return [
         
         ]
     
+    ],
+    
+    "Groups" => [
+    
+        "ExampleGroup" => [
+        
+            "myphpblog",
+            "myforum"
+            
+        ]
+        
     ]
 
 ]
@@ -77,9 +88,21 @@ Publisher::all()->create(
 use Scribble\Publisher;
 Publisher::only(["myphpblog", "myforum"])->create(
     [
-        "post_title"    => "Hi Mum",
+        "post_title"    => "Hello World",
         "post_content"  => "I'm posting all over the place now!
     ]);
 ```
 
 The "only" method accepts an array of the nicknames of the blogs you want to  use, nicknames are set in the Config/config.php file
+
+#####Publish to a group of providers
+```php
+use Scribble\Publisher;
+Publisher::group(["ExampleGroup"])->create(
+    [
+        "post_title"    => "Hello World",
+        "post_content"  => "I'm posting all over the place now!
+    ]);
+```
+
+The "group" method accepts a group name set in the Config.php file, this will load up a playlist of providers conventiently grouped together under one name.
