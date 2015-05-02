@@ -18,4 +18,21 @@ class ProviderService
         
         return true;
     }
+    
+    /**
+     * Handle the response from the bridge, check for success or failure and
+     * output an exception if required
+     */
+    protected function handleResponse($response)
+    {
+        $responseDecoded = json_decode($response);
+        
+        if ($responseDecoded->status == "ok") {
+            return true;
+        } elseif ($responseDecoded->status == "fail") {
+            throw new ScribbleProviderException($responseDecoded->message);
+        }
+        
+        return false;
+    }
 }
