@@ -106,3 +106,15 @@ Publisher::group(["ExampleGroup"])->create(
 ```
 
 The "group" method accepts a group name set in the Config.php file, this will load up a playlist of providers conventiently grouped together under one name.
+
+#####Change config settings at runtime
+```php
+use Scribble\Publisher;
+Publisher::config("myforum", ["default_forum_id" => 4])->only(["myforum"])->create(
+    [
+        "post_title"    => "Hello World",
+        "post_content"  => "I'm posting all over the place now!
+    ]);
+```
+
+The "config" method allows for changes in the settings during runtime for example when publishing to a phpBB forum you may wish to change the destination forum id from the default setting, above is an example of this. "config" accepts two parameters first, the nickname of the provider found in the Scribble Config/config.php file and second, an array of config settings to be used, the existing ones in the config.php file will be overwritten with these new values.
