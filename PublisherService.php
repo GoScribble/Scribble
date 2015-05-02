@@ -10,6 +10,7 @@ class PublisherService
     
     private $publishOver;
     private $providerDefinition;
+    private $configData;
     
     /**
      * Set Scribble to publish over all available providers
@@ -107,19 +108,44 @@ class PublisherService
     }
     
     /**
-     * Load the config file
+    * Override config settings
+    */
+    public function config($provider, $config)
+    {
+        //Load existing config
+        $this->loadConfig();
+        
+        //Alter config values with supplied settings
+        foreach ($config as $configKey => $configValue) {
+            foreach ($this->configData["Providers"] as $providerKey => $providerValue) {
+                if ($providerValue["nickname"] == $provider) {
+                    $this->configData["Providers"][$providerKey][$configKey] = $configValue;
+                }
+            }
+        }
+        
+        return $this;
+    }
+    
+    /**
+     * Load the config settings
      */
     private function loadConfig()
     {
-        //Check if the config file exists
-        try {
-            if (!file_exists(__DIR__ . "/Config/config.php")) {
-                throw new ScribbleException("The Scribble config file 'Config/config.php' could not be loaded, has is gone somewhere?");
+        //Check that config settings have not already been storred for use
+        if (empty($this->configData)) {
+            //Check if the config file exists
+            try {
+                if (!file_exists(__DIR__ . "/Config/config.php")) {
+                    throw new ScribbleException("The Scribble config file 'Config/config.php' could not be loaded, has is gone somewhere?");
+                }
+                $this->configData = include __DIR__ . "/Config/config.php";
+            } catch (ScribbleException $e) {
+                $this->scribbleExceptionHandle($e);
             }
-            return include __DIR__ . "/Config/config.php";
-        } catch (ScribbleException $e) {
-            $this->scribbleExceptionHandle($e);
         }
+        
+        return $this->configData;
     }
     
     /**
