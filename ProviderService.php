@@ -11,8 +11,7 @@ class ProviderService
     protected function checkConfig($config)
     {
         //Check either credentials have been provided or an api key
-        if (empty($config["api_key"]) && empty($config["username"]) && empty($config["password"]))
-        {
+        if (empty($config["api_key"]) && empty($config["username"]) && empty($config["password"])) {
             return false;
         }
         

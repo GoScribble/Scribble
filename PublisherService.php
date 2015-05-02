@@ -70,7 +70,7 @@ class PublisherService
             //Get the providers into an array from their resolved groups
             $providers = $this->getProvidersFromGroup($group, $this->loadConfig());
             if (!$providers) {
-                throw new ScribbleException("One or more of the groups provided could not be resolved with their providers, check the Scribble 'Config/config.php' file"); 
+                throw new ScribbleException("One or more of the groups provided could not be resolved with their providers, check the Scribble 'Config/config.php' file");
             }
             
             //Verify the providers provided are all available for use
@@ -157,7 +157,6 @@ class PublisherService
         $providersVerified = [];
         
         foreach ($providers as $providerKey => $providerValue) {
-            
             $providerFoundInConfig = false;
             
             foreach ($configProviders["Providers"] as $configKey => $configValue) {
@@ -180,7 +179,6 @@ class PublisherService
                     
                     array_push($providersVerified, $providerValue);
                     $providerFoundInConfig = true;
-                    
                 }
             }
             
@@ -188,7 +186,6 @@ class PublisherService
             if (!$providerFoundInConfig) {
                 $providersOk = false;
             }
-            
         }
         
         return $providersOk;
@@ -203,41 +200,31 @@ class PublisherService
         $providerSettings = array();
         
         if (is_array($providers)) {
-            
             foreach ($providers as $providerValue) {
                 foreach ($configProviders["Providers"] as $configKey => $configValue) {
                     
                     //Check if this is the provider we are looking for
                     if ($providerValue == $configValue["nickname"]) {
                         
-                        //Store these config settings for later use connecting 
+                        //Store these config settings for later use connecting
                         //to the provider
                         array_push($providerSettings, $configValue);
-                        
                     }
-                    
                 }
             }
-            
         } elseif ($providers == "all") {
-            
             foreach ($configProviders["Providers"] as $configKey => $configValue) {
                 
                 //Check if this provider is active and is ready to be used
                 if ($configValue["active"] === true) {
                     
-                    //Store these config settings for later use connecting 
+                    //Store these config settings for later use connecting
                     //to the provider
                     array_push($providerSettings, $configValue);
-                    
                 }
-                
             }
-            
         } else {
-            
             return false;
-            
         }
         
         //Check if there are no available providers
@@ -255,7 +242,6 @@ class PublisherService
     {
         //Loop through the publishing vectors, creating an instance of the provider class
         foreach ($this->publishOver as $publishValue) {
-            
             try {
                 //Create an instance of the class
                 $providerClass = new ReflectionClass("\\Scribble\\Providers\\" . $publishValue["provider_class"]);

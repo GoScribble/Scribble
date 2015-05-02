@@ -1,3 +1,5 @@
 <?php namespace Scribble\Exceptions;
 
-class ScribbleException extends \Exception {}
+class ScribbleException extends \Exception
+{
+}
