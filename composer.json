@@ -1,6 +1,9 @@
 {
     "name": "scribble/scribble",
     "description": "Publish your blog posts across multiple blogging platforms and sites",
+    "require": {
+        "curl/curl": "@dev"
+    },
     "require-dev": {
         "curl/curl": "@dev"
     },
