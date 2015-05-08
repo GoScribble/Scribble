@@ -1,4 +1,4 @@
-# Scribble [![Build Status](https://travis-ci.org/GoScribble/Scribble.svg)](https://travis-ci.org/GoScribble/Scribble) [![StyleCI](https://styleci.io/repos/33480669/shield)](https://styleci.io/repos/33480669)
+# Scribble [![Build Status](https://travis-ci.org/GoScribble/Scribble.svg)](https://travis-ci.org/GoScribble/Scribble) [![StyleCI](https://styleci.io/repos/33480669/shield)](https://styleci.io/repos/33480669) [![SensioLabsInsight](https://insight.sensiolabs.com/projects/a4744725-1ee6-4787-a1bd-4be1ef5e05d8/mini.png)](https://insight.sensiolabs.com/projects/a4744725-1ee6-4787-a1bd-4be1ef5e05d8)
 
 Scribble is a library that will connect you and all your blogs in a simple, clean and universal way. With Scribble you can publish your blog posts across multiple blogging platforms, forums and sites.
 
