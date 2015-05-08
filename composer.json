@@ -1,6 +1,7 @@
 {
     "name": "scribble/scribble",
     "description": "Publish your blog posts across multiple blogging platforms and sites",
+    "license": "MIT",
     "require": {
         "curl/curl": "@dev"
     },
