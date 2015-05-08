@@ -27,7 +27,7 @@ class Publisher
         }
     }
     
-    private static function thisIsNotAGreatStartExceptionHandle($exception)
+    private static function thisIsNotAGreatStartExceptionHandle(ReflectionException $exception)
     {
         echo "Scribble Exception: Well this isn't a great start! Here's the Reflection error \"" . $exception->getMessage() . "\" Is the PublisherService.php file still there? Or maybe you aren't using class autoloading in Composer?";
     }

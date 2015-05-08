@@ -1,6 +1,7 @@
 <?php namespace Scribble;
 
 use Scribble\Exceptions\ScribbleException;
+use Scribble\Exceptions\ScribbleProviderException;
 
 class ProviderService
 {

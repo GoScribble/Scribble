@@ -331,7 +331,7 @@ class PublisherService
         return $returnProviders;
     }
     
-    private function scribbleExceptionHandle($exception)
+    private function scribbleExceptionHandle(ScribbleException $exception)
     {
         echo "Scribble Exception: " . $exception->getMessage();
     }
@@ -339,7 +339,7 @@ class PublisherService
     /**
      * @param ScribbleProviderException $exception
      */
-    private function scribbleProviderExceptionHandle($exception, $provider)
+    private function scribbleProviderExceptionHandle(ScribbleProviderException $exception, $provider)
     {
         echo "Scribble Provider Exception [" . $provider . "]: " . $exception->getMessage();
     }
