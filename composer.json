@@ -3,10 +3,10 @@
     "description": "Publish your blog posts across multiple blogging platforms and sites",
     "license": "MIT",
     "require": {
-        "curl/curl": "@dev"
+        "curl/curl": "1.2.1"
     },
     "require-dev": {
-        "curl/curl": "@dev"
+        "curl/curl": "1.2.1"
     },
     "autoload": {
         "psr-4": {"Scribble\\": ""}
