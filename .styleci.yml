@@ -2,3 +2,4 @@ preset: psr2
 
 disabled:
   - php_closing_tag
+  
