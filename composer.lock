@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0a09e60a88b31ecd92be2a4cb5bc901b",
+    "hash": "2a5111948fb60c8c1ed595fc8afabd8d",
     "packages": [
         {
             "name": "curl/curl",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-mod/curl.git",
-                "reference": "c6a6e1e8c6cde61119a856dd1af702c1fa70acb0"
+                "reference": "67f7c490060751fbf24a02bc1ff3b32073aeb5e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-mod/curl/zipball/c6a6e1e8c6cde61119a856dd1af702c1fa70acb0",
-                "reference": "c6a6e1e8c6cde61119a856dd1af702c1fa70acb0",
+                "url": "https://api.github.com/repos/php-mod/curl/zipball/67f7c490060751fbf24a02bc1ff3b32073aeb5e0",
+                "reference": "67f7c490060751fbf24a02bc1ff3b32073aeb5e0",
                 "shasum": ""
             },
             "require": {
@@ -59,7 +59,7 @@
                 "curl",
                 "dot"
             ],
-            "time": "2015-02-13 19:05:20"
+            "time": "2015-04-09 16:29:25"
         }
     ],
     "packages-dev": [],
