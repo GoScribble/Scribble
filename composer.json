@@ -5,9 +5,6 @@
     "require": {
         "curl/curl": "1.2.1"
     },
-    "require-dev": {
-        "curl/curl": "1.2.1"
-    },
     "autoload": {
         "psr-4": {"Scribble\\": ""}
     }
