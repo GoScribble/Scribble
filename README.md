@@ -23,6 +23,9 @@ Download the <a href="https://github.com/GoScribble/Wordpress-Bridge">Scribble B
 ####phpBB Bridge
 Download the <a href="https://github.com/GoScribble/phpBB-Bridge">Scribble Bridge plugin</a> for phpBB and drop it into your forum's root directory, and that's it. 
 
+####Anchor Bridge
+Download the <a href="https://github.com/GoScribble/Anchor-Bridge">Anchor Bridge plugin</a> for Anchor and follow the instructions in the README.
+
 ###Setting up Scribble
 Rename your Scribble/Config/config.example.php file to config.php, here's an example of the config file set up to work with a Wordpress blog and a phpBB forum.
 ```php
@@ -52,6 +55,19 @@ return [
             "password"          => "pass",
             "default_forum_id"  => 2,
             "provider_class"    => "PhpBB"
+        
+        ],
+        
+        [
+            
+            "name"              => "Anchor",
+            "active"            => true,
+            "nickname"          => "myanchorblog",
+            "url"               => "http://myanchorblog.org",
+            "username"          => "user",
+            "password"          => "pass",
+            "default_cat_id"    => "1",
+            "provider_class"    => "Anchor"
         
         ]
     
