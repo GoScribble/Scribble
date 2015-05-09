@@ -26,6 +26,11 @@ class ProviderService
     {
         $responseDecoded = json_decode($response);
         
+        //Check the provider returned with the status
+        if (empty($responseDecoded->status)) {
+            throw new ScribbleProviderException("The provider did not respond in an acceptable way, it's likely that the post was not saved.");
+        }
+        
         if ($responseDecoded->status == "ok") {
             return true;
         } elseif ($responseDecoded->status == "fail") {
